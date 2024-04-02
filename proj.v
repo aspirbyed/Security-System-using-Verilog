@@ -1,4 +1,4 @@
-module proj();
+module proj(a,b,y);
 
 endmodule
 
@@ -89,35 +89,15 @@ module security_signal_distributor(s0,s1,s2,s3,m0,m1,m2,m3,c0,c1,c2,c3);
 endmodule
 
 // Employee Access System
-module decimal_to_bcd(input wire [3:0] dec, output reg [3:0] bcd);
-endmodule
-
-module dff (input wire [7:0] dec, output a);
-  wire s0,s1,s2,s3,s4,s5,s6,s7;
-  reg [7:0] temp=8'd31;
-  xnor x0(s0,dec[0],temp[0]), x1(s1,dec[1],temp[1]), x2(s2,dec[2],temp[2]), x3(s3,dec[3],temp[3]), x4(s4,dec[4],temp[4]), x5(s5,dec[5],temp[5]), x6(s6,dec[6],temp[6]), x7(s7,dec[7],temp[7]);
-  and a1(a,s0,s1,s2,s3,s4,s5,s6,s7);
-endmodule
-
-// Testbench
-module test;
-  reg [7:0] dec;
-  wire a;
-  dff p1(dec,a);
-initial 
-  begin;
-    $monitor("dec=%d, a=%b\n",dec,a);
-	dec=20;
-    #10;
-    dec=31;
-    #10;
-    dec=29;
-    #10;
-    dec=13;
-    #10;
-    dec=43;
-    #10;
-    dec=91;
-    #10;
-  end
+module dff (input wire [11:0] dec, output a);
+  wire s0,s1,s2,s3,s4,s5,s6,s7,a0,a1,a2,a3;
+  reg [11:0] temp0=12'd731;
+  reg [11:0] temp1=12'd294;
+  reg [11:0] temp2=12'd337;
+  reg [11:0] temp3=12'd191;
+  xnor x0(s0,dec[0],temp0[0]), x1(s1,dec[1],temp0[1]), x2(s2,dec[2],temp0[2]), x3(s3,dec[3],temp0[3]), x4(s4,dec[4],temp0[4]), x5(s5,dec[5],temp0[5]), x6(s6,dec[6],temp0[6]), x7(s7,dec[7],temp0[7]);
+  xnor x0(s0,dec[0],temp0[0]), x1(s1,dec[1],temp0[1]), x2(s2,dec[2],temp0[2]), x3(s3,dec[3],temp0[3]), x4(s4,dec[4],temp0[4]), x5(s5,dec[5],temp0[5]), x6(s6,dec[6],temp0[6]), x7(s7,dec[7],temp0[7]);
+  xnor x0(s0,dec[0],temp0[0]), x1(s1,dec[1],temp0[1]), x2(s2,dec[2],temp0[2]), x3(s3,dec[3],temp0[3]), x4(s4,dec[4],temp0[4]), x5(s5,dec[5],temp0[5]), x6(s6,dec[6],temp0[6]), x7(s7,dec[7],temp0[7]);
+  xnor x0(s0,dec[0],temp0[0]), x1(s1,dec[1],temp0[1]), x2(s2,dec[2],temp0[2]), x3(s3,dec[3],temp0[3]), x4(s4,dec[4],temp0[4]), x5(s5,dec[5],temp0[5]), x6(s6,dec[6],temp0[6]), x7(s7,dec[7],temp0[7]);
+  and a1(a0,s0,s1,s2,s3,s4,s5,s6,s7);
 endmodule
