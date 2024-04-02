@@ -1,5 +1,3 @@
-
-// Main Module
 module proj();
 
 endmodule
