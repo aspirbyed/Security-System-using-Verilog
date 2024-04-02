@@ -1,6 +1,3 @@
-/*
-
-*/
 module proj(fire, earth_quake,
     mds0, mds1, mds2, mds3,
     cam0, cam1, cam2, cam3, 
@@ -10,7 +7,7 @@ module proj(fire, earth_quake,
     );
 
     input fire, earth_quake;
-    input mds0[2:0], mds1[2:0], mds2[2:0], mds3[2:0], cam0[2:0], cam1[2:0], cam2[2:0], cam3[2:0];
+    input [2:0] mds0; input [2:0] mds1; input [2:0] mds2; input [2:0] mds3; input [2:0] cam0; input [2:0] cam1; input [2:0] cam2; input [2:0] cam3;
     input [11:0] access_code;
 
     output sec0, sec1, sec2, sec3;
@@ -28,7 +25,7 @@ endmodule
 
 // Calamity/Disaster Management
 module fire_sensor(y,a);
-    input fire;
+    input a;
     output y;
     and and0(y,1'b1,a);
 endmodule
@@ -80,7 +77,7 @@ endmodule
 
 // Security Alerting System
 module demux_m(s0,s1,s2,s3,a);
-    input wire logic [2:0] a;
+    input wire [2:0] a;
     output s0,s1,s2,s3;
     wire w0,w1;
     and and0(s0,w1,a[2],w0), and1(s1,a[1],a[2],w0), and2(s2,w1,a[2],a[0]), and3(s3,a[1],a[2],a[0]);
@@ -88,16 +85,16 @@ module demux_m(s0,s1,s2,s3,a);
 endmodule
 
 module security_signal_distributor_m(s0,s1,s2,s3,m0,m1,m2,m3,c0,c1,c2,c3);
-    input m0[2:0], m1[2:0], m2[2:0], m3[2:0], c0[2:0], c1[2:0], c2[2:0], c3[2:0];
+    input wire [2:0] m0; input wire [2:0] m1; input wire [2:0] m2; input wire [2:0] m3; input wire [2:0]c0; input wire [2:0] c1; input wire [2:0]c2; input wire [2:0] c3;
     output s0, s1, s2, s3;
 
     wire d0s0, d0s1, d0s2, d0s3, d1s0, d1s1, d1s2, d1s3, d2s0, d2s1, d2s2, d2s3, d3s0, d3s1, d3s2, d3s3,
     d4s0, d4s1, d4s2, d4s3, d5s0, d5s1, d5s2, d5s3, d6s0, d6s1, d6s2, d6s3, d7s0, d7s1, d7s2, d7s3;
 
-    demux d0(d0s0, d0s1, d0s2, d0s3, m0), d1(d1s0, d1s1, d1s2, d1s3, m1), d2(d2s0, d2s1, d2s2, d2s3, m2), d3(d3s0, d3s1, d3s2, d3s3, m3),
-    d4(d4s0, d4s1, d4s2, d4s3, c0), d5(d5s0, d5s1, d5s2, d5s3, c1), d6(d6s0, d6s1, d6s2, d6s3, c2), d7(d7s0, d7s1, d7s2, d7s3, c3);
+    demux_m demux0(d0s0, d0s1, d0s2, d0s3, m0), demux1(d1s0, d1s1, d1s2, d1s3, m1), demux2(d2s0, d2s1, d2s2, d2s3, m2), demux3(d3s0, d3s1, d3s2, d3s3, m3),
+    demux4(d4s0, d4s1, d4s2, d4s3, c0), demux5(d5s0, d5s1, d5s2, d5s3, c1), demux6(d6s0, d6s1, d6s2, d6s3, c2), demux7(d7s0, d7s1, d7s2, d7s3, c3);
 
-    security sec0(s0, d0s0, d1s0, d2s0, d3s0, d4s0, d5s0, d6s0, d7s0), sec1(s1, d0s1, d1s1, d2s1, d3s1, d4s1, d5s1, d6s1, d7s1),
+    security_m sec0(s0, d0s0, d1s0, d2s0, d3s0, d4s0, d5s0, d6s0, d7s0), sec1(s1, d0s1, d1s1, d2s1, d3s1, d4s1, d5s1, d6s1, d7s1),
     sec2(s2, d0s2, d1s2, d2s2, d3s2, d4s2, d5s2, d6s2, d7s2), sec3(s3, d0s3, d1s3, d2s3, d3s3, d4s3, d5s3, d6s3, d7s3);
 endmodule
 
