@@ -13,7 +13,7 @@ proj proj0(fire, earth_quake,
 );
 
 initial begin
-    $monitor("Input:\nfire=%b, earth_quake=%b,\nmds0=%b, mds1=%b, mds2=%b, mds3=%b,\ncam0=%b, cam1=%b, cam2=%b, cam3=%b,\naccess_code=%b,\nOutput:\nsec0=%b, sec1=%b, sec2=%b, sec3=%b, \ndoor=%b, fire_exit=%b, fire_dept_alert=%b, fire_alarm=%b, server_backup_signal=%b \n", fire, earth_quake, mds0, mds1, mds2, mds3, cam0, cam1, cam2, cam3, access_code, sec0, sec1, sec2, sec3, door, fire_exit, fire_dept_alert, fire_alarm, server_backup_signal);
+	$monitor("Input:\nfire=%b, earth_quake=%b,\nmds0=%b, mds1=%b, mds2=%b, mds3=%b,\ncam0=%b, cam1=%b, cam2=%b, cam3=%b,\naccess_code=%d,\nOutput:\nsec0=%b, sec1=%b, sec2=%b, sec3=%b, \ndoor=%b, fire_exit=%b, fire_dept_alert=%b, fire_alarm=%b, server_backup_signal=%b \n", fire, earth_quake, mds0, mds1, mds2, mds3, cam0, cam1, cam2, cam3, access_code, sec0, sec1, sec2, sec3, door, fire_exit, fire_dept_alert, fire_alarm, server_backup_signal);
     //all output deactivated
     fire=0; earth_quake=0;
     mds0=000; mds1=001; mds2=010; mds3=011;
