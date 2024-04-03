@@ -80,7 +80,7 @@ module demux_m(s0,s1,s2,s3,a);
     input wire [2:0] a;
     output s0,s1,s2,s3;
     wire w0,w1;
-    and and0(s0,w1,a[2],w0), and1(s1,a[1],a[2],w0), and2(s2,w1,a[2],a[0]), and3(s3,a[1],a[2],a[0]);
+    and and0(s0,w1,a[2],w0), and1(s1,w1,a[2],a[0]), and2(s2,w0,a[2],a[1]), and3(s3,a[1],a[2],a[0]);
     not not0(w0,a[0]), not1(w1,a[1]);
 endmodule
 
